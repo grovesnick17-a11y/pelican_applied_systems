@@ -12,7 +12,7 @@
 <link rel="preload" href="pelican-logo-brand.webp" as="image" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pelican Applied Systems">
 <meta property="og:title" content="Pelican Applied Systems | Software Systems That Run">
@@ -51,7 +51,7 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:auto}
-  body{background:#090C11;color:#E7EBF0;font-family:'IBM Plex Sans',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  body{background:#090C11;color:#E7EBF0;font-family:'Source Sans 3',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
   a{color:#9FB0FF;text-decoration:none}
   a:hover{color:#BEC9FF}
   :focus-visible{outline:3px solid #A8A0FF;outline-offset:4px}
@@ -72,6 +72,21 @@
   ::selection{background:#7E86F0;color:#090C11}
   input::placeholder,textarea::placeholder{color:#7C8798}
   canvas[data-fx-hero],canvas[data-fx-pin],canvas[data-fx-proof],canvas[data-fx-cursor]{display:block}
+  .opsflow{position:relative;background:#0A0D12;color:#E7EBF0;padding:clamp(50px,5vw,64px) 0;overflow:hidden}
+  .opshead{display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,90px);align-items:end}
+  .opsheadcopy{max-width:54ch;color:#AAB2BE;font-size:clamp(1rem,1.35vw,1.16rem);line-height:1.6}
+  .opssteps{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(32px,3vw,42px);border-top:1px solid #303844}
+  .opsstep{position:relative;min-height:148px;padding:26px clamp(24px,3vw,44px) 0 0}
+  .opsstep+.opsstep{border-left:1px solid #202731;padding-left:clamp(24px,3vw,44px)}
+  .opsstep::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;border-radius:50%;background:#6D7580;box-shadow:0 0 0 4px #0A0D12}
+  .opsstep+.opsstep::before{left:-4px}
+  .opsstep[data-flow-stage="system"]::before{background:#817AE0}
+  .opsstep[data-flow-stage="outcome"]::before{background:#5FA784}
+  .opsnum{font-family:'Source Sans 3';font-size:.61rem;letter-spacing:.18em;text-transform:uppercase;color:#7E8793}
+  .opsstep h3{margin-top:11px;color:#F1F3F6;font-size:clamp(1.18rem,1.65vw,1.52rem);font-weight:600;line-height:1.2}
+  .opsstep p{margin-top:12px;max-width:34ch;color:#9EA8B5;font-size:.96rem;line-height:1.58}
+  .opssignal{position:absolute;z-index:2;top:-1px;left:-9%;width:9%;height:1px;background:linear-gradient(90deg,transparent,#9B96EA,transparent);animation:opsPass 7.5s linear infinite;pointer-events:none}
+  @keyframes opsPass{to{left:100%}}
 
   /* ===== reveals (one family, hair of overshoot) =====
      hiding is gated on [data-anim="on"], set by JS once wiring succeeds:
@@ -173,7 +188,7 @@
   .orbit{animation:orbitSpin 70s linear infinite;will-change:transform}
   @keyframes orbitSpin{to{transform:rotate(360deg)}}
   .orbchip{position:absolute;left:50%;top:50%;width:0;height:0;transform:rotate(var(--a))}
-  .orbchip>span{position:absolute;left:min(96px,7.5vw);top:0;display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #2A3340;border-radius:999px;background:rgba(14,18,25,.82);white-space:nowrap;font-family:'IBM Plex Mono';font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#C4CCD6;transform:translate(-50%,-50%) rotate(calc(-1*var(--a)));animation:orbitCounter 70s linear infinite}
+  .orbchip>span{position:absolute;left:min(96px,7.5vw);top:0;display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid #2A3340;border-radius:999px;background:rgba(14,18,25,.82);white-space:nowrap;font-family:'Source Sans 3';font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:#C4CCD6;transform:translate(-50%,-50%) rotate(calc(-1*var(--a)));animation:orbitCounter 70s linear infinite}
   .orbchip>span::before{content:"";width:6px;height:6px;border-radius:50%;background:#8E86F5;box-shadow:0 0 8px rgba(126,134,240,.6)}
   @keyframes orbitCounter{from{transform:translate(-50%,-50%) rotate(calc(-1*var(--a)))}to{transform:translate(-50%,-50%) rotate(calc(-1*var(--a) - 360deg))}}
 
@@ -210,7 +225,7 @@
   [data-wsdemo][data-phase] [data-wsb]{opacity:.22}
   [data-wsdemo][data-phase="1"] [data-wsb="1"],[data-wsdemo][data-phase="2"] [data-wsb="2"],[data-wsdemo][data-phase="3"] [data-wsb="3"]{opacity:1}
   [data-wsdemo][data-phase="3"] [data-wsb="2"]{opacity:.5}
-  .wscap{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#525D6C;position:relative;padding-bottom:7px;transition:color .4s ease}
+  .wscap{font-family:'Source Sans 3';font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#525D6C;position:relative;padding-bottom:7px;transition:color .4s ease}
   .wscap::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:#8E86F5;transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.2,1,.3,1)}
   [data-wsdemo][data-phase="1"] .wscap-1,[data-wsdemo][data-phase="2"] .wscap-2,[data-wsdemo][data-phase="3"] .wscap-3{color:#C9CFFF}
   [data-wsdemo][data-phase="1"] .wscap-1::after,[data-wsdemo][data-phase="2"] .wscap-2::after,[data-wsdemo][data-phase="3"] .wscap-3::after{transform:scaleX(1)}
@@ -254,7 +269,14 @@
     .catrow h3{font-size:1.42rem!important}
     .actwrap{height:2.9em!important}
     [data-actlabel]{font-size:.58rem!important;letter-spacing:.14em!important;white-space:normal;line-height:1.6}
-    section[data-pm]>div{height:min(118vw,470px)!important}
+    .opsflow{padding:42px 0 40px}
+    .opshead{grid-template-columns:1fr;gap:12px}
+    .opssteps{grid-template-columns:1fr;border-top:0;margin-top:28px}
+    .opsstep,.opsstep+.opsstep{min-height:0;padding:0 0 24px 28px;border-top:0;border-left:1px solid #303844}
+    .opsstep:last-child{padding-bottom:0}
+    .opsstep::before,.opsstep+.opsstep::before{top:6px;left:-4px}
+    .opsstep h3{margin-top:8px}
+    .opssignal{display:none}
     [data-toolsgrid]{grid-template-columns:1fr!important}
     [data-wsdemo] svg text{font-size:16px;letter-spacing:1.5px}
   }
@@ -275,6 +297,7 @@
     .orbit,.orbchip>span{animation:none!important}
     .seam span{animation:none!important;opacity:0!important}
     .catsweep span{display:none!important}
+    .opssignal{display:none!important}
     .accwrap,.accwrap>div{transition:none!important}
     [data-wsb]{opacity:1!important}
     [data-confirm] .sigline{transform:none!important;animation:none!important}
@@ -304,8 +327,8 @@
       <div class="halopulse" style="position:absolute;inset:-45%;background:radial-gradient(circle,rgba(126,134,240,.34),transparent 62%)"></div>
       <img class="introMark" src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="512" height="512" decoding="async" style="position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 0 34px rgba(126,134,240,.75))">
     </div>
-    <div class="introWord" style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2.4rem,6.4vw,4.2rem);letter-spacing:-.025em;line-height:1;color:#F4F7FB">Pelican</div>
-    <div class="introSub" style="font-family:'IBM Plex Mono';font-weight:500;font-size:clamp(.66rem,1.4vw,.82rem);text-transform:uppercase;color:#8E86F5;margin-top:14px;padding-left:.5em">Applied Systems</div>
+    <div class="introWord" style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.4rem,6.4vw,4.2rem);letter-spacing:-.025em;line-height:1;color:#F4F7FB">Pelican</div>
+    <div class="introSub" style="font-family:'Source Sans 3';font-weight:500;font-size:clamp(.66rem,1.4vw,.82rem);text-transform:uppercase;color:#8E86F5;margin-top:14px;padding-left:.5em">Applied Systems</div>
     <div class="introBar" style="width:150px;height:2px;background:#1C2430;overflow:hidden;border-radius:2px;margin-top:34px"><span style="display:block;height:100%;width:100%;background:linear-gradient(90deg,#7E86F0,#B36FF0)"></span></div>
   </div>
 </div>
@@ -317,8 +340,8 @@
       <span style="display:inline-flex;align-items:center;gap:13px">
         <img src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="42" height="42" decoding="async" style="width:42px;height:42px;display:block">
         <span style="display:flex;flex-direction:column;line-height:1.04">
-          <span style="font-family:'IBM Plex Sans';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
-          <span style="font-family:'IBM Plex Mono';font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#8E9AAC;margin-top:4px">Applied Systems</span>
+          <span style="font-family:'Source Sans 3';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
+          <span style="font-family:'Source Sans 3';font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#8E9AAC;margin-top:4px">Applied Systems</span>
         </span>
       </span>
     </div>
@@ -328,18 +351,18 @@
           <span class="sigline" style="display:block;height:2px;width:min(120px,26vw);background:#7E86F0;transform-origin:0 50%"></span>
           <span class="signode" style="display:block;width:9px;height:9px;border:1.5px solid #7E86F0;margin-left:3px;position:relative"></span>
         </div>
-        <span class="cfi cfi1" style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Inquiry received</span>
-        <h2 class="cfi cfi2" data-confirm-h tabindex="-1" style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2rem,4.6vw,3.6rem);letter-spacing:-.028em;line-height:1.06;margin-top:22px;color:#F4F7FB;max-width:18ch;outline:none">Thanks for bringing us into the process.</h2>
+        <span class="cfi cfi1" style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Inquiry received</span>
+        <h2 class="cfi cfi2" data-confirm-h tabindex="-1" style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2rem,4.6vw,3.6rem);letter-spacing:-.028em;line-height:1.06;margin-top:22px;color:#F4F7FB;max-width:18ch;outline:none">Thanks for bringing us into the process.</h2>
         <p class="cfi cfi3" style="margin-top:22px;max-width:54ch;color:#9AA4B2;font-size:clamp(1.02rem,1.35vw,1.16rem);line-height:1.66">We've received your information and the context you shared. We'll take a close look at how the work happens today, where the friction lives, and what the right next step could be.</p>
-        <p class="cfi cfi4" style="margin-top:18px;font-family:'IBM Plex Sans';font-weight:600;font-size:1.04rem;color:#EAEEF3">You'll hear from us within three business days.</p>
+        <p class="cfi cfi4" style="margin-top:18px;font-family:'Source Sans 3';font-weight:600;font-size:1.04rem;color:#EAEEF3">You'll hear from us within three business days.</p>
         <div class="cfi cfi5" style="margin-top:34px;display:flex;flex-direction:column;gap:20px;align-items:flex-start">
-          <a data-confirm-return href="#top" style="font-family:'IBM Plex Sans';font-weight:600;font-size:.98rem;color:#090C11;background:#EEF1F5;padding:.85em 1.6em;border-radius:8px;display:inline-flex;align-items:center;gap:.55em;min-height:50px;transition:background .15s" style-hover="background:#fff">Return to Pelican <span aria-hidden="true">→</span></a>
+          <a data-confirm-return href="#top" style="font-family:'Source Sans 3';font-weight:600;font-size:.98rem;color:#090C11;background:#EEF1F5;padding:.85em 1.6em;border-radius:8px;display:inline-flex;align-items:center;gap:.55em;min-height:50px;transition:background .15s" style-hover="background:#fff">Return to Pelican <span aria-hidden="true">→</span></a>
           <p style="font-size:.95rem;color:#9AA4B2">Have a question in the meantime? <a href="mailto:hello@pelicanappliedsystems.com" style="color:#9FB0FF;border-bottom:1px solid rgba(142,134,245,.35)" style-hover="color:#BEC9FF">hello@pelicanappliedsystems.com</a></p>
         </div>
       </div>
     </div>
     <div style="width:min(1180px,90vw);margin-inline:auto;padding:0 0 22px">
-      <span style="font-family:'IBM Plex Mono';font-size:.68rem;letter-spacing:.12em;color:#7C8798">© 2026 Pelican Applied Systems</span>
+      <span style="font-family:'Source Sans 3';font-size:.68rem;letter-spacing:.12em;color:#7C8798">© 2026 Pelican Applied Systems</span>
     </div>
   </div>
 </div>
@@ -350,8 +373,8 @@
     <a href="#top" aria-label="Pelican Applied Systems home" style="display:flex;align-items:center;gap:13px">
       <img src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="42" height="42" fetchpriority="high" style="width:42px;height:42px;display:block">
       <span data-brandtext style="display:flex;flex-direction:column;line-height:1.04">
-        <span style="font-family:'IBM Plex Sans';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
-        <span data-brand-sub style="font-family:'IBM Plex Mono';font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#8E9AAC;margin-top:4px">Applied Systems</span>
+        <span style="font-family:'Source Sans 3';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
+        <span data-brand-sub style="font-family:'Source Sans 3';font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#8E9AAC;margin-top:4px">Applied Systems</span>
       </span>
     </a>
     <nav aria-label="Primary" style="display:flex;gap:34px;align-items:center" data-navlinks>
@@ -370,7 +393,7 @@
         <a href="#contact">Contact</a>
       </nav>
     </details>
-    <a href="#contact" data-magnet style="font-family:'IBM Plex Sans';font-weight:600;font-size:.88rem;color:#090C11;background:#EEF1F5;padding:.62em 1.25em;border-radius:7px;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;transition:background .15s" style-hover="background:#fff">Book a call</a>
+    <a href="#contact" data-magnet style="font-family:'Source Sans 3';font-weight:600;font-size:.88rem;color:#090C11;background:#EEF1F5;padding:.62em 1.25em;border-radius:7px;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;transition:background .15s" style-hover="background:#fff">Book a call</a>
   </div>
 </header>
 
@@ -397,10 +420,10 @@
     </div>
   </div>
   <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.72rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em">
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.72rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em">
       <span style="width:26px;height:1px;background:#7E86F0;display:inline-block"></span>Identify · Design · Deploy
     </span>
-    <h1 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2.6rem,4.4vw,4.6rem);letter-spacing:-.028em;line-height:1.05;margin:30px 0 0;color:#F4F7FB;max-width:24ch">
+    <h1 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.6rem,4.4vw,4.6rem);letter-spacing:-.028em;line-height:1.05;margin:30px 0 0;color:#F4F7FB;max-width:24ch">
       <span class="mask"><span class="maskin">We turn manual business</span></span>
       <span class="mask"><span class="maskin">processes into software</span></span>
       <span class="mask"><span class="maskin"><span class="rgbword" style="display:inline-block">systems that run.</span></span></span>
@@ -408,7 +431,7 @@
     <p data-reveal style="transition-delay:.5s;margin-top:30px;max-width:56ch;color:#9AA4B2;font-size:clamp(1.02rem,1.4vw,1.24rem);line-height:1.6">We identify where work breaks down, design the right operating system, and deploy the software, dashboards, automations, and AI workflows that make the business easier to run.</p>
   </div>
   <div style="position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;z-index:2">
-    <span style="font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#7C8798">Scroll</span>
+    <span style="font-family:'Source Sans 3';font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#7C8798">Scroll</span>
     <span class="cuebar" style="width:1px;height:38px;background:#1E2732;overflow:hidden;display:block"><span style="display:block;width:1px;height:100%;background:linear-gradient(180deg,transparent,#7E86F0)"></span></span>
   </div>
 </section>
@@ -418,8 +441,8 @@
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div data-parallax="0.22" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(680px 460px at 24% 34%,rgba(126,134,240,.12),transparent 62%);will-change:transform"></div>
   <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>The real need</span>
-    <h2 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2.1rem,5vw,4.3rem);letter-spacing:-.03em;line-height:1.05;margin-top:28px;color:#F1F4F8;max-width:19ch">
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>The real need</span>
+    <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.1rem,5vw,4.3rem);letter-spacing:-.03em;line-height:1.05;margin-top:28px;color:#F1F4F8;max-width:19ch">
       <span class="mask"><span class="maskin">Most companies don't need</span></span>
       <span class="mask"><span class="maskin">another generic tool.</span></span>
       <span class="mask"><span class="maskin">They need a tool</span></span>
@@ -430,18 +453,32 @@
 </section>
 
 <!-- ===================== BEAT 4 — PROOF MOTION (full-bleed generative) ===================== -->
-<section data-pm data-reveal style="position:relative;padding:clamp(64px,9vw,110px) 0;background:linear-gradient(180deg,#07090E 0%,#07090E 80%,#090C11 100%)">
-  <div style="position:relative;width:100%;height:clamp(420px,74vh,720px)">
-    <canvas data-fx-proof style="position:absolute;inset:0;width:100%;height:100%"></canvas>
-    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(126,134,240,.2),transparent)"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(126,134,240,.2),transparent)"></div>
-    <div style="position:absolute;top:20px;left:50%;transform:translateX(-50%);width:min(1180px,90vw);display:flex;align-items:center;justify-content:space-between;gap:14px">
-      <span style="font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#7C8798;display:inline-flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:#5B5FA0;box-shadow:0 0 10px rgba(126,134,240,.5);flex:none"></span>Manual work</span>
-      <span style="font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:#9AA4B2;display:inline-flex;align-items:center;gap:8px;text-align:right"><span style="width:7px;height:7px;border-radius:50%;background:#43C08A;box-shadow:0 0 0 3px rgba(67,192,138,.18),0 0 12px rgba(67,192,138,.8);flex:none"></span>AI-enabled, runs itself</span>
+<section id="transformation" class="opsflow" aria-labelledby="transformation-title">
+  <div style="width:min(1180px,90vw);margin:0 auto">
+    <div class="opshead">
+      <div>
+        <p style="font-family:'Source Sans 3';font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#8D96A2">Operational transformation</p>
+        <h2 id="transformation-title" style="margin-top:10px;color:#F1F3F6;font-size:clamp(1.7rem,2.8vw,2.5rem);font-weight:600;line-height:1.14">From friction to dependable operations.</h2>
+      </div>
+      <p class="opsheadcopy">We clarify the work, design the right operating flow, and put a system in place that the team can rely on.</p>
     </div>
-    <div style="position:absolute;left:56%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;display:flex;align-items:center;justify-content:center;pointer-events:none">
-      <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(142,134,245,.55);background:radial-gradient(circle at 50% 42%,#191633,#0b0d15 74%);box-shadow:0 0 36px -4px rgba(126,134,240,.75)"></span>
-      <img src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="512" height="512" loading="lazy" decoding="async" style="position:relative;width:58%;height:auto;display:block;filter:drop-shadow(0 0 10px rgba(126,134,240,.6))">
+    <div class="opssteps">
+      <span class="opssignal" aria-hidden="true"></span>
+      <div class="opsstep" data-flow-stage="friction">
+        <span class="opsnum">01 / Understand</span>
+        <h3>Find the friction</h3>
+        <p>We trace the handoffs, repeated entry, and missing visibility slowing the team down.</p>
+      </div>
+      <div class="opsstep" data-flow-stage="system">
+        <span class="opsnum">02 / Design</span>
+        <h3>Shape the system</h3>
+        <p>We create one clear operating flow around the way the business and its people actually work.</p>
+      </div>
+      <div class="opsstep" data-flow-stage="outcome">
+        <span class="opsnum">03 / Deliver</span>
+        <h3>Make it dependable</h3>
+        <p>We implement, document, and support it so the team can move forward with confidence.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -450,8 +487,8 @@
 <section data-lux style="position:relative;overflow:hidden;padding:clamp(76px,11vw,130px) 0;background:#F4F5F7">
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div style="width:min(1180px,90vw);margin-inline:auto">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>In practice</span>
-    <h2 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:clamp(28px,4vw,44px);color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">Systems we build.</span></span></h2>
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>In practice</span>
+    <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:clamp(28px,4vw,44px);color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">Systems we build.</span></span></h2>
     <div data-reveal data-luxlist style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 clamp(30px,4.5vw,64px);border-top:1px solid #D3D8DF">
       <span style="display:flex;align-items:center;gap:14px;font-size:1.06rem;font-weight:500;color:#C9D1DC;padding:17px 0;border-bottom:1px solid #1D2530"><span style="width:5px;height:5px;background:#7E86F0;flex:none"></span>Field reporting &amp; QC systems</span>
       <span style="display:flex;align-items:center;gap:14px;font-size:1.06rem;font-weight:500;color:#C9D1DC;padding:17px 0;border-bottom:1px solid #1D2530"><span style="width:5px;height:5px;background:#7E86F0;flex:none"></span>Owner dashboards &amp; live reporting</span>
@@ -467,8 +504,8 @@
 <!-- ===================== BEAT 4.6 — AI TOOLS WE MAXIMIZE ===================== -->
 <section data-lux style="position:relative;overflow:hidden;padding:clamp(10px,2vw,24px) 0 clamp(76px,11vw,130px);background:#F4F5F7">
   <div style="width:min(1180px,90vw);margin-inline:auto">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Already in your stack</span>
-    <h2 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:18px;color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">AI tools we maximize.</span></span></h2>
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Already in your stack</span>
+    <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:18px;color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">AI tools we maximize.</span></span></h2>
     <p data-reveal style="color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.65;max-width:62ch;margin-bottom:clamp(28px,4vw,44px)">Whether your team is all-in on ChatGPT, Claude, Gemini, and Copilot or just getting started, we help you use these tools the way power users do.</p>
     <div data-reveal data-toolsgrid data-luxlist style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:0 clamp(30px,4.5vw,64px);border-top:1px solid #D3D8DF">
       <span style="display:flex;align-items:center;gap:14px;font-size:1.06rem;font-weight:500;color:#C9D1DC;padding:17px 0;border-bottom:1px solid #1D2530"><span style="width:5px;height:5px;background:#7E86F0;flex:none"></span>ChatGPT, Claude, Gemini &amp; Copilot</span>
@@ -490,16 +527,16 @@
   <div data-parallax="0.16" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(720px 480px at 76% 32%,rgba(126,134,240,.12),transparent 62%);will-change:transform"></div>
   <div data-wsgrid style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto;display:grid;grid-template-columns:1fr 1.06fr;gap:clamp(36px,5vw,76px);align-items:center">
     <div>
-      <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Applied AI Workshops</span>
-      <h2 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(1.9rem,3.4vw,2.9rem);letter-spacing:-.025em;line-height:1.08;margin-top:24px;color:#F4F7FB;max-width:16ch">
+      <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Applied AI Workshops</span>
+      <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.9rem,3.4vw,2.9rem);letter-spacing:-.025em;line-height:1.08;margin-top:24px;color:#F4F7FB;max-width:16ch">
         <span class="mask"><span class="maskin">Help your team work</span></span>
         <span class="mask"><span class="maskin">like <span class="rgbword" style="display:inline-block">AI power users.</span></span></span>
       </h2>
       <p data-reveal style="transition-delay:.3s;margin-top:24px;max-width:52ch;color:#9AA4B2;font-size:clamp(.98rem,1.25vw,1.08rem);line-height:1.7">Whether your team is just getting started or already using ChatGPT, Claude, and Gemini every day, we help them turn these tools into repeatable ways of working. Every session is built around your actual workflows, so your team leaves with practical systems, reusable resources, and work already moving.</p>
       <p data-reveal style="transition-delay:.4s;margin-top:16px;max-width:52ch;color:#9AA4B2;font-size:clamp(.98rem,1.25vw,1.08rem);line-height:1.7">No generic presentations or disconnected prompt tips. We work through the research, reporting, communication, analysis, and operational tasks your team handles every day, then show them where AI can save time, improve quality, and create leverage.</p>
       <div data-reveal style="transition-delay:.5s;margin-top:30px">
-        <a href="#contact" data-lead-source="workshop" data-magnet style="font-family:'IBM Plex Sans';font-weight:600;font-size:.98rem;color:#090C11;background:#EEF1F5;padding:.85em 1.6em;border-radius:8px;display:inline-flex;align-items:center;gap:.55em;min-height:50px;transition:background .15s" style-hover="background:#fff">Plan a workshop <span aria-hidden="true">→</span></a>
-        <p style="margin-top:14px;font-family:'IBM Plex Mono';font-size:.7rem;letter-spacing:.06em;color:#7C8798">Available for individuals and teams, in person or remotely.</p>
+        <a href="#contact" data-lead-source="workshop" data-magnet style="font-family:'Source Sans 3';font-weight:600;font-size:.98rem;color:#090C11;background:#EEF1F5;padding:.85em 1.6em;border-radius:8px;display:inline-flex;align-items:center;gap:.55em;min-height:50px;transition:background .15s" style-hover="background:#fff">Plan a workshop <span aria-hidden="true">→</span></a>
+        <p style="margin-top:14px;font-family:'Source Sans 3';font-size:.7rem;letter-spacing:.06em;color:#7C8798">Available for individuals and teams, in person or remotely.</p>
       </div>
     </div>
     <div data-wsdemo data-reveal style="transition-delay:.2s">
@@ -507,7 +544,7 @@
         <rect x="200" y="20" width="330" height="200" rx="10" fill="#0E131B" stroke="#2A3546" stroke-width="1.5"></rect>
         <path d="M365 220 v22 M348 242 h34" stroke="#2A3546" stroke-width="1.5" stroke-linecap="round"></path>
         <g data-wsb="1">
-          <text x="224" y="54" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="2.5" fill="#6E7686">THE WORK TODAY</text>
+          <text x="224" y="54" font-family="'Source Sans 3',sans-serif" font-size="10" letter-spacing="2.5" fill="#6E7686">THE WORK TODAY</text>
           <rect x="224" y="66" width="50" height="26" rx="6" stroke="#8A96A8" stroke-width="1.6"></rect>
           <path d="M280 79 h18 M294 75 l7 4 -7 4" stroke="#8A96A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
           <rect x="306" y="66" width="50" height="26" rx="6" stroke="#8A96A8" stroke-width="1.6"></rect>
@@ -515,7 +552,7 @@
           <rect x="452" y="66" width="50" height="26" rx="6" stroke="#8A96A8" stroke-width="1.6" stroke-dasharray="4 4"></rect>
         </g>
         <g data-wsb="2">
-          <text x="224" y="134" font-family="'IBM Plex Mono',monospace" font-size="10" letter-spacing="2.5" fill="#6E7686">REBUILT WITH AI</text>
+          <text x="224" y="134" font-family="'Source Sans 3',sans-serif" font-size="10" letter-spacing="2.5" fill="#6E7686">REBUILT WITH AI</text>
           <rect x="224" y="144" width="50" height="26" rx="6" stroke="#8A96A8" stroke-width="1.6"></rect>
           <path d="M280 157 h18 M294 153 l7 4 -7 4" stroke="#8A96A8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
           <rect x="306" y="144" width="58" height="26" rx="7" stroke="#8E86F5" stroke-width="1.8"></rect>
@@ -561,44 +598,44 @@
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div class="seam" style="position:absolute;top:0;left:0;right:0;height:1px"><span></span></div>
   <div style="width:min(1180px,90vw);margin-inline:auto;width:min(1180px,90vw)">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>What we do</span>
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>What we do</span>
     <div data-luxline style="border-top:1px solid #D3D8DF;margin-top:36px">
       <div data-reveal data-acc class="catrow" role="button" tabindex="0" aria-expanded="false" style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(30px,4.4vw,58px) 0;color:inherit;cursor:pointer">
-        <span class="catnum" style="font-family:'IBM Plex Mono';font-size:.82rem;color:#7E86F0">01</span>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">AI Strategy &amp; Execution</h3>
+        <span class="catnum" style="font-family:'Source Sans 3';font-size:.82rem;color:#7E86F0">01</span>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">AI Strategy &amp; Execution</h3>
         <span class="catarrow" data-catarrow aria-hidden="true" style="font-size:1.5rem;color:#6B7688">→</span>
         <div class="accwrap"><div>
           <p style="margin-top:clamp(18px,2.4vw,26px);max-width:64ch;color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.7">We map how work actually moves through the business, find where time and margin leak, and define the system worth building. Then we lead the build from concept to shipped software: workflows, dashboards, automations, and the AI capabilities required to make it work.</p>
-          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'Source Sans 3';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
         </div></div>
         <span class="catsweep"><span></span></span>
         <span class="drawline"></span>
       </div>
       <div data-reveal data-acc class="catrow" role="button" tabindex="0" aria-expanded="false" style="transition-delay:.1s;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(30px,4.4vw,58px) 0;color:inherit;cursor:pointer">
-        <span class="catnum" style="font-family:'IBM Plex Mono';font-size:.82rem;color:#7E86F0">02</span>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Product Systems</h3>
+        <span class="catnum" style="font-family:'Source Sans 3';font-size:.82rem;color:#7E86F0">02</span>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Product Systems</h3>
         <span class="catarrow" data-catarrow aria-hidden="true" style="font-size:1.5rem;color:#6B7688">→</span>
         <div class="accwrap"><div>
           <p style="margin-top:clamp(18px,2.4vw,26px);max-width:64ch;color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.7">Customer- and subscriber-facing products where AI is the engine, not a bolt-on. We turn your data, research, and expertise into tools people use every day. Pipelines, models, and interface, shipped fast and built to compound.</p>
-          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'Source Sans 3';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
         </div></div>
         <span class="catsweep"><span></span></span>
         <span class="drawline"></span>
       </div>
       <div data-reveal data-acc class="catrow" role="button" tabindex="0" aria-expanded="false" style="transition-delay:.2s;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(30px,4.4vw,58px) 0;color:inherit;cursor:pointer">
-        <span class="catnum" style="font-family:'IBM Plex Mono';font-size:.82rem;color:#7E86F0">03</span>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Operational Automation</h3>
+        <span class="catnum" style="font-family:'Source Sans 3';font-size:.82rem;color:#7E86F0">03</span>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Operational Automation</h3>
         <span class="catarrow" data-catarrow aria-hidden="true" style="font-size:1.5rem;color:#6B7688">→</span>
         <div class="accwrap"><div>
           <p style="margin-top:clamp(18px,2.4vw,26px);max-width:64ch;color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.7">The work that quietly runs the company, from reporting and scheduling to invoicing and field-to-office paperwork, rebuilt as software that runs itself. Humans stay in the loop where judgment matters; everything else moves on its own. Owners see the whole operation live instead of chasing updates.</p>
-          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:.5em;margin-top:18px;font-family:'Source Sans 3';font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#8E86F5">Book a systems call <span aria-hidden="true">→</span></a>
         </div></div>
         <span class="catsweep"><span></span></span>
         <span class="drawline"></span>
       </div>
       <div data-reveal data-acc class="catrow" role="button" tabindex="0" aria-expanded="false" style="transition-delay:.3s;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(30px,4.4vw,58px) 0;color:inherit;cursor:pointer">
-        <span class="catnum" style="font-family:'IBM Plex Mono';font-size:.82rem;color:#7E86F0">04</span>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Applied AI Workshops</h3>
+        <span class="catnum" style="font-family:'Source Sans 3';font-size:.82rem;color:#7E86F0">04</span>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.8rem,4.6vw,3.5rem);letter-spacing:-.025em;color:#F1F4F8;line-height:1.02">Applied AI Workshops</h3>
         <span class="catarrow" data-catarrow aria-hidden="true" style="font-size:1.5rem;color:#6B7688">→</span>
         <div class="accwrap"><div>
           <p style="margin-top:clamp(18px,2.4vw,26px);max-width:64ch;color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.16rem);line-height:1.7">Hands-on training for individuals and teams, led by practitioners who run their own businesses on these tools. We teach your people to use Claude, ChatGPT, and Gemini like power users, built around the workflows they already own, so the session ends with systems in place and work already moving.</p>
@@ -615,26 +652,26 @@
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div data-parallax="0.2" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(700px 480px at 70% 40%,rgba(126,134,240,.13),transparent 62%);will-change:transform"></div>
   <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
-    <span data-reveal style="font-family:'IBM Plex Mono';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Why Pelican</span>
-    <h2 data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2.1rem,5.6vw,4.7rem);letter-spacing:-.03em;line-height:1.04;margin-top:28px;color:#F1F4F8;max-width:15ch">
+    <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Why Pelican</span>
+    <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.1rem,5.6vw,4.7rem);letter-spacing:-.03em;line-height:1.04;margin-top:28px;color:#F1F4F8;max-width:15ch">
       <span class="mask"><span class="maskin">Product vision.</span></span>
       <span class="mask"><span class="maskin">Systems thinking.</span></span>
       <span class="mask"><span class="maskin"><span class="rgbword" style="display:inline-block">Shipped software.</span></span></span>
     </h2>
     <div data-trio style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,48px);margin-top:clamp(44px,6vw,72px)">
       <div data-reveal style="border-top:1px solid #2C3542;padding-top:24px">
-        <div style="font-family:'IBM Plex Mono';font-size:.74rem;color:#7E86F0;margin-bottom:16px">01</div>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We've built AI products end to end.</h3>
+        <div style="font-family:'Source Sans 3';font-size:.74rem;color:#7E86F0;margin-bottom:16px">01</div>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We've built AI products end to end.</h3>
         <p style="color:#9AA4B2;font-size:1rem;line-height:1.68;max-width:38ch">From product strategy and interface design to prompt systems, model and API configuration, frontend, backend, authentication, payments, and deployment, we have taken AI software from idea to working product.</p>
       </div>
       <div data-reveal style="transition-delay:.12s;border-top:1px solid #2C3542;padding-top:24px">
-        <div style="font-family:'IBM Plex Mono';font-size:.74rem;color:#7E86F0;margin-bottom:16px">02</div>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We've used AI to run real work.</h3>
+        <div style="font-family:'Source Sans 3';font-size:.74rem;color:#7E86F0;margin-bottom:16px">02</div>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We've used AI to run real work.</h3>
         <p style="color:#9AA4B2;font-size:1rem;line-height:1.68;max-width:38ch">We have built workflows that turn expert analysis into daily subscriber-ready output, support recurring delivery to hundreds, and helped a new X account surpass one million impressions in three months.</p>
       </div>
       <div data-reveal style="transition-delay:.24s;border-top:1px solid #2C3542;padding-top:24px">
-        <div style="font-family:'IBM Plex Mono';font-size:.74rem;color:#7E86F0;margin-bottom:16px">03</div>
-        <h3 style="font-family:'IBM Plex Sans';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We know what holds up in practice.</h3>
+        <div style="font-family:'Source Sans 3';font-size:.74rem;color:#7E86F0;margin-bottom:16px">03</div>
+        <h3 style="font-family:'Source Sans 3';font-weight:600;font-size:clamp(1.16rem,1.6vw,1.34rem);letter-spacing:-.015em;color:#EEF1F5;line-height:1.25;margin-bottom:12px">We know what holds up in practice.</h3>
         <p style="color:#9AA4B2;font-size:1rem;line-height:1.68;max-width:38ch">Using AI across products, marketing, websites, payments, and full-stack systems has taught us what to automate, where human judgment still matters, and how to turn a promising demo into dependable work.</p>
       </div>
     </div>
@@ -651,23 +688,23 @@
         <span style="position:absolute;inset:12px;border-radius:50%;border:1.5px solid rgba(142,134,245,.5);background:radial-gradient(circle at 50% 42%,#191633,#0b0d15 74%);box-shadow:0 0 48px -8px rgba(126,134,240,.6);display:flex;align-items:center;justify-content:center"><img src="pelican-logo-brand.webp" alt="" aria-hidden="true" class="breathe" width="512" height="512" loading="lazy" decoding="async" style="width:56%;height:56%;object-fit:contain;display:block"></span>
       </div>
     </div>
-    <h2 id="contact-heading" data-mask style="font-family:'IBM Plex Sans';font-weight:700;font-size:clamp(2.2rem,5.8vw,4.6rem);letter-spacing:-.035em;line-height:1.03;color:#F4F7FB;max-width:18ch">
+    <h2 id="contact-heading" data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.2rem,5.8vw,4.6rem);letter-spacing:-.035em;line-height:1.03;color:#F4F7FB;max-width:18ch">
       <span class="mask"><span class="maskin">Let's find the system your</span></span>
       <span class="mask"><span class="maskin">business <span class="rgbword" style="display:inline-block">should become.</span></span></span>
     </h2>
     <form data-leadform data-reveal aria-labelledby="contact-heading" style="transition-delay:.22s;margin-top:38px;width:min(560px,100%);display:flex;flex-direction:column;gap:12px;text-align:left">
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <label class="sr-only" for="lead-name">Your name</label>
-        <input id="lead-name" name="name" placeholder="Your name" autocomplete="name" style="flex:1;min-width:170px;background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'IBM Plex Sans';font-size:1rem;transition:border-color .15s" style-focus="border-color:#8E86F5">
+        <input id="lead-name" name="name" placeholder="Your name" autocomplete="name" style="flex:1;min-width:170px;background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'Source Sans 3';font-size:1rem;transition:border-color .15s" style-focus="border-color:#8E86F5">
         <label class="sr-only" for="lead-contact">Work email or phone</label>
-        <input id="lead-contact" name="email" type="text" required="required" placeholder="Work email or phone" autocomplete="email" aria-describedby="lead-contact-help" style="flex:1;min-width:170px;background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'IBM Plex Sans';font-size:1rem;transition:border-color .15s" style-focus="border-color:#8E86F5">
+        <input id="lead-contact" name="email" type="text" required="required" placeholder="Work email or phone" autocomplete="email" aria-describedby="lead-contact-help" style="flex:1;min-width:170px;background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'Source Sans 3';font-size:1rem;transition:border-color .15s" style-focus="border-color:#8E86F5">
       </div>
       <span id="lead-contact-help" class="sr-only">Enter either a valid email address or phone number.</span>
       <label class="sr-only" for="lead-about">Tell us about your goals</label>
-      <textarea id="lead-about" name="about" rows="4" placeholder="Tell us about your industry, pain points, and what you'd like to accomplish" style="background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'IBM Plex Sans';font-size:1rem;line-height:1.55;transition:border-color .15s;resize:vertical;min-height:110px;width:100%" style-focus="border-color:#8E86F5"></textarea>
-      <button type="submit" data-magnet style="font-family:'IBM Plex Sans';font-weight:600;font-size:1.04rem;color:#090C11;background:#EEF1F5;border:none;cursor:pointer;padding:1em 1.9em;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:56px;transition:background .15s" style-hover="background:#fff">Book a systems call <span aria-hidden="true">→</span></button>
-      <p data-form-msg aria-live="polite" style="font-family:'IBM Plex Mono';font-size:.74rem;letter-spacing:.04em;color:#43C08A;text-align:center;margin-top:4px;min-height:1.2em"></p>
-      <p style="font-family:'IBM Plex Mono';font-size:.72rem;letter-spacing:.06em;color:#7C8798;text-align:center;margin-top:6px">We reply within three business days · hello@pelicanappliedsystems.com</p>
+      <textarea id="lead-about" name="about" rows="4" placeholder="Tell us about your industry, pain points, and what you'd like to accomplish" style="background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'Source Sans 3';font-size:1rem;line-height:1.55;transition:border-color .15s;resize:vertical;min-height:110px;width:100%" style-focus="border-color:#8E86F5"></textarea>
+      <button type="submit" data-magnet style="font-family:'Source Sans 3';font-weight:600;font-size:1.04rem;color:#090C11;background:#EEF1F5;border:none;cursor:pointer;padding:1em 1.9em;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:56px;transition:background .15s" style-hover="background:#fff">Book a systems call <span aria-hidden="true">→</span></button>
+      <p data-form-msg aria-live="polite" style="font-family:'Source Sans 3';font-size:.74rem;letter-spacing:.04em;color:#43C08A;text-align:center;margin-top:4px;min-height:1.2em"></p>
+      <p style="font-family:'Source Sans 3';font-size:.72rem;letter-spacing:.06em;color:#7C8798;text-align:center;margin-top:6px">We reply within three business days · hello@pelicanappliedsystems.com</p>
     </form>
   </div>
 </section>
@@ -676,8 +713,8 @@
 <!-- ===================== FOOTER (one line) ===================== -->
 <footer style="padding:26px 0;background:linear-gradient(180deg,#070A0E 0%,#080B10 70%)">
   <div style="width:min(1180px,90vw);margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
-    <span style="font-family:'IBM Plex Mono';font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#8391A0">Pelican Applied Systems</span>
-    <span style="font-family:'IBM Plex Mono';font-size:.7rem;letter-spacing:.1em;color:#7C8798">© 2026 · Identify · Design · Deploy</span>
+    <span style="font-family:'Source Sans 3';font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#8391A0">Pelican Applied Systems</span>
+    <span style="font-family:'Source Sans 3';font-size:.7rem;letter-spacing:.1em;color:#7C8798">© 2026 · Identify · Design · Deploy</span>
   </div>
 </footer>
 
@@ -953,7 +990,7 @@ class Component extends DCLogic {
       c.width = GLYPHS.length * cellW * d; c.height = 2 * cellH * d;
       const g = c.getContext('2d');
       g.scale(d, d);
-      g.font = '500 15px "IBM Plex Mono",monospace';
+      g.font = '500 15px "Source Sans 3",sans-serif';
       g.textAlign = 'center'; g.textBaseline = 'middle';
       for (let i = 0; i < GLYPHS.length; i++) {
         g.fillStyle = 'rgba(132,142,215,.8)';
@@ -1156,9 +1193,10 @@ class Component extends DCLogic {
       g.setTransform(F.d, 0, 0, F.d, 0, 0);
       g.clearRect(0, 0, w, h);
       const gx = w * 0.56, gy = h / 2;
-      const padL = h * 0.1, padR = h * 0.16, S = 22;
-      const wander = (x, b, i) => (Math.sin(x * 0.011 + t * 0.9 + i * 2.1) * 19 + Math.sin(x * 0.027 - t * 1.25 + i * 5.7) * 12) * (1 - b * 0.92);
-      g.font = '500 ' + (mobile ? '10px' : '12.5px') + ' "IBM Plex Mono",monospace'; g.textBaseline = 'alphabetic';
+      const padL = h * 0.2, padR = h * 0.2, S = 22;
+      const flowScale = clamp(h / 600, 0.42, 1);
+      const wander = (x, b, i) => (Math.sin(x * 0.011 + t * 0.9 + i * 2.1) * 19 * flowScale + Math.sin(x * 0.027 - t * 1.25 + i * 5.7) * 12 * flowScale) * (1 - b * 0.92);
+      g.font = '500 ' + (mobile ? '10px' : '12.5px') + ' "Source Sans 3",sans-serif'; g.textBaseline = 'alphabetic';
       // tangled manual threads converging on the gate
       for (let i = 0; i < laneN; i++) {
         const y0 = padL + (i + 0.5) / laneN * (h - padL * 2) + (seed(i, 62) - 0.5) * h * 0.05;
