@@ -55,6 +55,7 @@
   a{color:#9FB0FF;text-decoration:none}
   a:hover{color:#BEC9FF}
   :focus-visible{outline:3px solid #A8A0FF;outline-offset:4px}
+  section[id]{scroll-margin-top:64px}
   .skip-link{position:fixed;left:18px;top:14px;z-index:500;transform:translateY(-180%);background:#F4F7FB;color:#090C11;padding:.7em 1em;border-radius:6px;font-weight:600;transition:transform .15s ease}
   .skip-link:focus{transform:none}
   .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
@@ -66,7 +67,8 @@
   .mobileNav[open] .menuIcon span:nth-child(1){transform:translateY(6px) rotate(45deg)}
   .mobileNav[open] .menuIcon span:nth-child(2){opacity:0}
   .mobileNav[open] .menuIcon span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-  .mobileNavPanel{position:fixed;left:5vw;right:5vw;top:70px;width:auto;padding:8px;background:#0D1219;border:1px solid #2A3340;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .mobileNavPanel{display:none;position:fixed;left:5vw;right:5vw;top:70px;width:auto;padding:8px;background:#0D1219;border:1px solid #2A3340;border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .mobileNav[open] .mobileNavPanel{display:block}
   .mobileNavPanel a{display:block;padding:12px 14px;border-radius:6px;color:#D7DDE5;font-weight:500}
   .mobileNavPanel a:hover{background:#171D27;color:#fff}
   ::selection{background:#7E86F0;color:#090C11}
@@ -256,32 +258,87 @@
     header a[href="#contact"]{min-height:44px!important}
   }
   @media(max-width:760px){
+    header{padding:12px 0!important}
+    .nav-inner{width:calc(100% - 32px)!important;gap:10px!important}
+    .brand-link{gap:9px!important;min-width:0;min-height:44px}
+    .brand-logo{width:36px!important;height:36px!important}
+    .brand-name{font-size:1.18rem!important}
+    .mobileNav{margin-left:auto}
+    .mobileNavPanel{left:16px;right:16px;top:68px;padding:6px}
+    .mobileNavPanel a{display:flex;align-items:center;min-height:48px;padding:10px 12px}
+    .nav-cta{font-size:.8rem!important;padding:.55em .82em!important;min-height:44px!important}
     [data-intro]{display:none!important}
-    [data-pin].cinematic{height:150vh}
-    [data-catarrow]{display:none!important}
+    [data-vh]:not([data-hero]){min-height:auto!important}
+    [data-hero]{min-height:clamp(640px,calc(100svh - 24px),720px)!important;align-items:flex-start!important;padding:112px 0 64px!important}
+    .section-inner{width:calc(100% - 32px)!important}
+    [data-marktilt],.scrollcue{display:none!important}
+    [data-parallax]{transform:none!important}
+    [data-pin].cinematic{height:auto}
+    [data-catarrow]{display:block!important;font-size:1.1rem!important}
     [data-node] [data-nodefloat]{padding:5px 9px!important}
     [data-nodefloat] span:last-child{font-size:.52rem!important;letter-spacing:.1em!important}
-    [data-marktilt]{width:172px!important;right:4%!important;top:15%!important;opacity:.65}
     .orbchip{display:none!important}
-    h1[data-mask]{font-size:2.35rem!important;max-width:100%!important}
-    h2[data-mask]{font-size:clamp(1.66rem,7.4vw,2.05rem)!important}
-    .catrow{gap:14px!important}
-    .catrow h3{font-size:1.42rem!important}
+    h1[data-mask]{font-size:2rem!important;line-height:1.08!important;letter-spacing:0!important;margin-top:24px!important;max-width:100%!important}
+    h2[data-mask]{font-size:2rem!important;line-height:1.1!important;letter-spacing:0!important}
+    [data-mask] .maskin{transition-duration:.6s!important}
+    .hero-copy{font-size:1rem!important;line-height:1.55!important;margin-top:24px!important;max-width:35ch!important}
+    [data-need]{padding:72px 0!important}
+    [data-need] h2{margin-top:24px!important}
+    [data-need] p{margin-top:24px!important;font-size:1.05rem!important;line-height:1.58!important}
+    .catrow{grid-template-columns:26px minmax(0,1fr) 18px!important;gap:12px!important;padding:24px 0!important;transform:none!important}
+    .catrow h3{font-size:1.36rem!important;line-height:1.12!important;letter-spacing:0!important}
+    .accwrap p{margin-top:16px!important;font-size:.98rem!important;line-height:1.62!important}
+    .accwrap a{margin-top:14px!important;letter-spacing:.12em!important}
     .actwrap{height:2.9em!important}
     [data-actlabel]{font-size:.58rem!important;letter-spacing:.14em!important;white-space:normal;line-height:1.6}
-    .opsflow{padding:42px 0 40px}
+    .opsflow{padding:56px 0 54px}
     .opshead{grid-template-columns:1fr;gap:12px}
-    .opssteps{grid-template-columns:1fr;border-top:0;margin-top:28px}
-    .opsstep,.opsstep+.opsstep{min-height:0;padding:0 0 24px 28px;border-top:0;border-left:1px solid #303844}
+    .opshead h2{font-size:1.75rem!important;line-height:1.18!important;letter-spacing:0!important}
+    .opsheadcopy{font-size:1rem;line-height:1.55}
+    .opssteps{grid-template-columns:1fr;border-top:0;margin-top:24px}
+    .opsstep,.opsstep+.opsstep{min-height:0;padding:0 0 21px 24px;border-top:0;border-left:1px solid #303844}
     .opsstep:last-child{padding-bottom:0}
     .opsstep::before,.opsstep+.opsstep::before{top:6px;left:-4px}
     .opsstep h3{margin-top:8px}
+    .opsstep p{margin-top:8px;line-height:1.5}
     .opssignal{display:none}
+    [data-practice]{padding:68px 0!important}
+    [data-tools-section]{padding:6px 0 68px!important}
+    [data-luxlist]>span{gap:12px!important;padding:14px 0!important;font-size:1rem!important;line-height:1.35}
     [data-toolsgrid]{grid-template-columns:1fr!important}
+    #workshops{padding:68px 0!important}
+    [data-wsgrid]{gap:32px!important}
+    #workshops h2{margin-top:20px!important}
+    #workshops p{line-height:1.62!important}
+    [data-wsdemo]{width:min(100%,380px);margin-inline:auto}
     [data-wsdemo] svg text{font-size:16px;letter-spacing:1.5px}
+    .wscaps{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px!important}
+    .wscap{font-size:.55rem;letter-spacing:.08em;line-height:1.4}
+    #what,#why{padding:68px 0!important;align-items:flex-start!important}
+    #what [data-luxline]{margin-top:28px!important}
+    #why h2{margin-top:24px!important}
+    [data-trio]{gap:30px!important;margin-top:36px!important}
+    [data-trio]>div{padding-top:20px!important}
+    [data-trio] p{line-height:1.62!important}
+    #contact{padding:72px 0 54px!important;min-height:auto!important}
+    #contact [data-reveal]:first-child{margin-bottom:22px!important}
+    #contact h2{font-size:2rem!important;line-height:1.08!important;letter-spacing:0!important}
+    form[data-leadform]{margin-top:30px!important;gap:10px!important}
+    .lead-fields{flex-direction:column;gap:10px!important}
+    .lead-fields input{width:100%;min-width:0!important}
+    form[data-leadform] textarea{min-height:120px}
+    form[data-leadform] p{line-height:1.5}
+    .footer-inner{flex-direction:column;align-items:flex-start!important;gap:8px!important}
+    section[id]{scroll-margin-top:68px}
   }
   @media(max-width:420px){
     [data-brand-sub]{display:none!important}
+  }
+  @media(max-width:360px){
+    .nav-inner,.section-inner{width:calc(100% - 24px)!important}
+    .brand-logo{width:34px!important;height:34px!important}
+    .brand-name{font-size:1.1rem!important}
+    .nav-cta{font-size:.75rem!important;padding:.5em .7em!important}
   }
   @media(prefers-reduced-motion:reduce){
     [data-reveal],.maskin{opacity:1!important;transform:none!important;transition:none!important}
@@ -369,11 +426,11 @@
 
 <!-- ===================== NAV ===================== -->
 <header ref="{{ setNav }}" style="position:fixed;top:0;left:0;right:0;z-index:80;padding:17px 0;transition:background .3s ease,box-shadow .3s ease,backdrop-filter .3s ease,padding .3s ease">
-  <div style="width:min(1180px,90vw);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:24px">
-    <a href="#top" aria-label="Pelican Applied Systems home" style="display:flex;align-items:center;gap:13px">
-      <img src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="42" height="42" fetchpriority="high" style="width:42px;height:42px;display:block">
+  <div class="nav-inner" style="width:min(1180px,90vw);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a class="brand-link" href="#top" aria-label="Pelican Applied Systems home" style="display:flex;align-items:center;gap:13px">
+      <img class="brand-logo" src="pelican-logo-brand.webp" alt="" aria-hidden="true" width="42" height="42" fetchpriority="high" style="width:42px;height:42px;display:block">
       <span data-brandtext style="display:flex;flex-direction:column;line-height:1.04">
-        <span style="font-family:'Source Sans 3';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
+        <span class="brand-name" style="font-family:'Source Sans 3';font-weight:700;font-size:1.34rem;letter-spacing:-.02em;color:#F3F6FA">Pelican</span>
         <span data-brand-sub style="font-family:'Source Sans 3';font-weight:500;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:#8E9AAC;margin-top:4px">Applied Systems</span>
       </span>
     </a>
@@ -393,14 +450,13 @@
         <a href="#contact">Contact</a>
       </nav>
     </details>
-    <a href="#contact" data-magnet style="font-family:'Source Sans 3';font-weight:600;font-size:.88rem;color:#090C11;background:#EEF1F5;padding:.62em 1.25em;border-radius:7px;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;transition:background .15s" style-hover="background:#fff">Book a call</a>
+    <a class="nav-cta" href="#contact" data-magnet style="font-family:'Source Sans 3';font-weight:600;font-size:.88rem;color:#090C11;background:#EEF1F5;padding:.62em 1.25em;border-radius:7px;display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;transition:background .15s" style-hover="background:#fff">Book a call</a>
   </div>
 </header>
 
 <!-- ===================== BEAT 1 — IDEA (a scene, not a background) ===================== -->
 <main id="main-content" tabindex="-1">
-<section data-vh style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(100px,16vw,130px) 0 clamp(72px,12vw,96px)">
-  <canvas data-fx-hero style="position:absolute;inset:0;width:100%;height:100%"></canvas>
+<section data-vh data-hero style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(100px,16vw,130px) 0 clamp(72px,12vw,96px)">
   <div data-parallax="0.3" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(760px 500px at 72% 24%,rgba(126,134,240,.17),transparent 60%);will-change:transform"></div>
   <div class="aurora" style="position:absolute;top:-14%;left:4%;width:80%;height:90%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(150,110,240,.12),transparent 60%);will-change:transform"></div>
   <div data-marktilt style="position:absolute;top:50%;right:clamp(46px,3.2%,72px);transform:translateY(-50%);width:min(300px,23vw);aspect-ratio:1;z-index:1;pointer-events:none;will-change:transform">
@@ -419,7 +475,7 @@
       <span class="orbchip" style="--a:300deg"><span>Legacy tools</span></span>
     </div>
   </div>
-  <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
+  <div class="section-inner" style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.72rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em">
       <span style="width:26px;height:1px;background:#7E86F0;display:inline-block"></span>Identify · Design · Deploy
     </span>
@@ -428,19 +484,19 @@
       <span class="mask"><span class="maskin">processes into software</span></span>
       <span class="mask"><span class="maskin"><span class="rgbword" style="display:inline-block">systems that run.</span></span></span>
     </h1>
-    <p data-reveal style="transition-delay:.5s;margin-top:30px;max-width:56ch;color:#9AA4B2;font-size:clamp(1.02rem,1.4vw,1.24rem);line-height:1.6">We identify where work breaks down, design the right operating system, and deploy the software, dashboards, automations, and AI workflows that make the business easier to run.</p>
+    <p class="hero-copy" data-reveal style="transition-delay:.5s;margin-top:30px;max-width:56ch;color:#9AA4B2;font-size:clamp(1.02rem,1.4vw,1.24rem);line-height:1.6">We identify where work breaks down, design the right operating system, and deploy the software, dashboards, automations, and AI workflows that make the business easier to run.</p>
   </div>
-  <div style="position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;z-index:2">
+  <div class="scrollcue" style="position:absolute;left:50%;bottom:34px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none;z-index:2">
     <span style="font-family:'Source Sans 3';font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#7C8798">Scroll</span>
     <span class="cuebar" style="width:1px;height:38px;background:#1E2732;overflow:hidden;display:block"><span style="display:block;width:1px;height:100%;background:linear-gradient(180deg,transparent,#7E86F0)"></span></span>
   </div>
 </section>
 
 <!-- ===================== BEAT 3 — THE GAP ===================== -->
-<section data-lux data-vh style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(76px,12vw,110px) 0;background:#F4F5F7">
+<section data-lux data-vh data-need style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(76px,12vw,110px) 0;background:#F4F5F7">
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div data-parallax="0.22" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(680px 460px at 24% 34%,rgba(126,134,240,.12),transparent 62%);will-change:transform"></div>
-  <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
+  <div class="section-inner" style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>The real need</span>
     <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.1rem,5vw,4.3rem);letter-spacing:-.03em;line-height:1.05;margin-top:28px;color:#F1F4F8;max-width:19ch">
       <span class="mask"><span class="maskin">Most companies don't need</span></span>
@@ -454,7 +510,7 @@
 
 <!-- ===================== BEAT 4 — PROOF MOTION (full-bleed generative) ===================== -->
 <section id="transformation" class="opsflow" aria-labelledby="transformation-title">
-  <div style="width:min(1180px,90vw);margin:0 auto">
+  <div class="section-inner" style="width:min(1180px,90vw);margin:0 auto">
     <div class="opshead">
       <div>
         <p style="font-family:'Source Sans 3';font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:#8D96A2">Operational transformation</p>
@@ -484,9 +540,9 @@
 </section>
 
 <!-- ===================== BEAT 4.5 — SYSTEMS WE BUILD ===================== -->
-<section data-lux style="position:relative;overflow:hidden;padding:clamp(76px,11vw,130px) 0;background:#F4F5F7">
+<section data-lux data-practice style="position:relative;overflow:hidden;padding:clamp(76px,11vw,130px) 0;background:#F4F5F7">
   <span class="scanline" data-reveal><span class="beam"></span></span>
-  <div style="width:min(1180px,90vw);margin-inline:auto">
+  <div class="section-inner" style="width:min(1180px,90vw);margin-inline:auto">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>In practice</span>
     <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:clamp(28px,4vw,44px);color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">Systems we build.</span></span></h2>
     <div data-reveal data-luxlist style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 clamp(30px,4.5vw,64px);border-top:1px solid #D3D8DF">
@@ -502,8 +558,8 @@
 </section>
 
 <!-- ===================== BEAT 4.6 — AI TOOLS WE MAXIMIZE ===================== -->
-<section data-lux style="position:relative;overflow:hidden;padding:clamp(10px,2vw,24px) 0 clamp(76px,11vw,130px);background:#F4F5F7">
-  <div style="width:min(1180px,90vw);margin-inline:auto">
+<section data-lux data-tools-section style="position:relative;overflow:hidden;padding:clamp(10px,2vw,24px) 0 clamp(76px,11vw,130px);background:#F4F5F7">
+  <div class="section-inner" style="width:min(1180px,90vw);margin-inline:auto">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Already in your stack</span>
     <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);letter-spacing:-.025em;line-height:1.1;margin-top:16px;margin-bottom:18px;color:#F1F4F8;max-width:22ch"><span class="mask"><span class="maskin">AI tools we maximize.</span></span></h2>
     <p data-reveal style="color:#9AA4B2;font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.65;max-width:62ch;margin-bottom:clamp(28px,4vw,44px)">Whether your team is all-in on ChatGPT, Claude, Gemini, and Copilot or just getting started, we help you use these tools the way power users do.</p>
@@ -525,7 +581,7 @@
 <section id="workshops" style="position:relative;overflow:hidden;padding:clamp(90px,12vw,140px) 0;background:linear-gradient(180deg,#090C11 0%,#07090E 14%,#07090E 86%,#090C11 100%)">
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div data-parallax="0.16" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(720px 480px at 76% 32%,rgba(126,134,240,.12),transparent 62%);will-change:transform"></div>
-  <div data-wsgrid style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto;display:grid;grid-template-columns:1fr 1.06fr;gap:clamp(36px,5vw,76px);align-items:center">
+  <div class="section-inner" data-wsgrid style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto;display:grid;grid-template-columns:1fr 1.06fr;gap:clamp(36px,5vw,76px);align-items:center">
     <div>
       <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Applied AI Workshops</span>
       <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(1.9rem,3.4vw,2.9rem);letter-spacing:-.025em;line-height:1.08;margin-top:24px;color:#F4F7FB;max-width:16ch">
@@ -584,7 +640,7 @@
           <path d="M343 286 l-11 7 12 4" stroke="#8E86F5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
         </g>
       </svg>
-      <div style="display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid #1A212C;padding-top:13px;margin-top:10px">
+      <div class="wscaps" style="display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid #1A212C;padding-top:13px;margin-top:10px">
         <span class="wscap wscap-1">01 Map the work</span>
         <span class="wscap wscap-2">02 Build the workflow</span>
         <span class="wscap wscap-3">03 Train the team</span>
@@ -597,7 +653,7 @@
 <section data-lux id="what" data-vh style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(90px,12vw,150px) 0;background:#F4F5F7">
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div class="seam" style="position:absolute;top:0;left:0;right:0;height:1px"><span></span></div>
-  <div style="width:min(1180px,90vw);margin-inline:auto;width:min(1180px,90vw)">
+  <div class="section-inner" style="width:min(1180px,90vw);margin-inline:auto;width:min(1180px,90vw)">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>What we do</span>
     <div data-luxline style="border-top:1px solid #D3D8DF;margin-top:36px">
       <div data-reveal data-acc class="catrow" role="button" tabindex="0" aria-expanded="false" style="position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(20px,3vw,40px);padding:clamp(30px,4.4vw,58px) 0;color:inherit;cursor:pointer">
@@ -651,7 +707,7 @@
 <section data-lux="soft" id="why" data-vh style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:clamp(76px,12vw,110px) 0;background:#ECEEF1">
   <span class="scanline" data-reveal><span class="beam"></span></span>
   <div data-parallax="0.2" style="position:absolute;inset:-12% -6% 0 -6%;pointer-events:none;background:radial-gradient(700px 480px at 70% 40%,rgba(126,134,240,.13),transparent 62%);will-change:transform"></div>
-  <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
+  <div class="section-inner" style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto">
     <span data-reveal style="font-family:'Source Sans 3';font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#8B95A3;display:inline-flex;align-items:center;gap:.8em"><span style="width:24px;height:1px;background:#7E86F0;display:inline-block"></span>Why Pelican</span>
     <h2 data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.1rem,5.6vw,4.7rem);letter-spacing:-.03em;line-height:1.04;margin-top:28px;color:#F1F4F8;max-width:15ch">
       <span class="mask"><span class="maskin">Product vision.</span></span>
@@ -681,7 +737,7 @@
 <!-- ===================== BEAT 8 — ACTION (total stillness but the breathing mark) ===================== -->
 <section id="contact" data-vh style="position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:clamp(84px,13vw,120px) 0;background:radial-gradient(780px 460px at 50% 32%,rgba(126,134,240,.11),transparent 62%),linear-gradient(180deg,#090C11 0%,#070A0E 20%,#070A0E 100%)">
   <div data-parallax="0.12" style="position:absolute;inset:-14% -6% 0 -6%;pointer-events:none;background:radial-gradient(560px 420px at 50% 20%,rgba(150,110,240,.08),transparent 64%);will-change:transform"></div>
-  <div style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto;max-width:820px;display:flex;flex-direction:column;align-items:center">
+  <div class="section-inner" style="position:relative;z-index:2;width:min(1180px,90vw);margin-inline:auto;max-width:820px;display:flex;flex-direction:column;align-items:center">
     <div data-reveal style="margin-bottom:30px">
       <div style="position:relative;display:flex;align-items:center;justify-content:center;width:82px;height:82px">
         <span style="position:absolute;inset:0;border:1px dashed rgba(142,134,245,.26);border-radius:50%"></span>
@@ -689,11 +745,11 @@
       </div>
     </div>
     <h2 id="contact-heading" data-mask style="font-family:'Source Sans 3';font-weight:700;font-size:clamp(2.2rem,5.8vw,4.6rem);letter-spacing:-.035em;line-height:1.03;color:#F4F7FB;max-width:18ch">
-      <span class="mask"><span class="maskin">Let's find the system your</span></span>
-      <span class="mask"><span class="maskin">business <span class="rgbword" style="display:inline-block">should become.</span></span></span>
+      <span class="mask"><span class="maskin">Let's find the system</span></span>
+      <span class="mask"><span class="maskin">your business <span class="rgbword" style="display:inline-block">should become.</span></span></span>
     </h2>
     <form data-leadform data-reveal aria-labelledby="contact-heading" style="transition-delay:.22s;margin-top:38px;width:min(560px,100%);display:flex;flex-direction:column;gap:12px;text-align:left">
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="lead-fields" style="display:flex;gap:12px;flex-wrap:wrap">
         <label class="sr-only" for="lead-name">Your name</label>
         <input id="lead-name" name="name" placeholder="Your name" autocomplete="name" style="flex:1;min-width:170px;background:#10151D;border:1px solid #2A3340;border-radius:8px;padding:.85em 1em;color:#EAEEF3;font-family:'Source Sans 3';font-size:1rem;transition:border-color .15s" style-focus="border-color:#8E86F5">
         <label class="sr-only" for="lead-contact">Work email or phone</label>
@@ -712,7 +768,7 @@
 
 <!-- ===================== FOOTER (one line) ===================== -->
 <footer style="padding:26px 0;background:linear-gradient(180deg,#070A0E 0%,#080B10 70%)">
-  <div style="width:min(1180px,90vw);margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+  <div class="footer-inner section-inner" style="width:min(1180px,90vw);margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
     <span style="font-family:'Source Sans 3';font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#8391A0">Pelican Applied Systems</span>
     <span style="font-family:'Source Sans 3';font-size:.7rem;letter-spacing:.1em;color:#7C8798">© 2026 · Identify · Design · Deploy</span>
   </div>
@@ -731,7 +787,7 @@ class Component extends DCLogic {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fine = matchMedia('(pointer:fine)').matches;
     const isTouch = 'ontouchstart' in window;
-    const mobile = innerWidth < 760;
+    const mobile = innerWidth <= 760;
     const wantSmooth = false; // native scrolling — wheel hijack removed, it fought the user's input
     const wantPin = (this.props.pinnedHero ?? true) && !reduce;
     const wantCursor = false; // mouse follower removed
@@ -750,7 +806,7 @@ class Component extends DCLogic {
     const seed = (i, a) => { const x = Math.sin((i + 1) * 97.13 + a * 41.7) * 43758.5453; return x - Math.floor(x); };
 
     // ===== type performance: split headline lines into materializing chars =====
-    if (!reduce) {
+    if (!reduce && !mobile) {
       root.querySelectorAll('[data-mask]').forEach(mk => {
         if (mk.classList.contains('charmode')) return;
         const accessibleText = mk.textContent.trim().replace(/\s+/g, ' ');
@@ -908,7 +964,7 @@ class Component extends DCLogic {
         n.paddingTop = s ? '11px' : '17px';
         n.paddingBottom = s ? '11px' : '17px';
       }
-      if (!reduce) {
+      if (!reduce && !mobile) {
         try {
           const vh = innerHeight;
           this.parallax.forEach(el => {
@@ -966,6 +1022,7 @@ class Component extends DCLogic {
     this._introSafety = setTimeout(() => { this._introDone = true; readyGo(); }, 2200);
 
     // ===== sprites =====
+    const hasCanvasFx = !!root.querySelector('[data-fx-pin],[data-fx-proof],[data-fx-cursor]');
     const makeGlow = (size, inner, mid, outer) => {
       const c = document.createElement('canvas'); c.width = c.height = size;
       const g = c.getContext('2d');
@@ -974,17 +1031,18 @@ class Component extends DCLogic {
       g.fillStyle = gr; g.fillRect(0, 0, size, size);
       return c;
     };
-    const spr = {
+    const spr = hasCanvasFx ? {
       dot: makeGlow(48, 'rgba(198,194,255,1)', 'rgba(140,140,250,.5)', 'rgba(126,134,240,0)'),
       soft: makeGlow(96, 'rgba(126,134,240,.55)', 'rgba(126,134,240,.22)', 'rgba(126,134,240,0)'),
       mag: makeGlow(48, 'rgba(226,150,250,.95)', 'rgba(190,110,240,.45)', 'rgba(179,111,240,0)'),
       big: makeGlow(256, 'rgba(150,145,255,.5)', 'rgba(126,134,240,.18)', 'rgba(126,134,240,0)'),
-    };
+    } : {};
 
     // glyph atlas for the proof field (rebuilt once fonts are ready)
     const GLYPHS = '01<>/|:·+=~';
     let atlas = null, cellW = 16, cellH = 24;
     const buildAtlas = () => {
+      if (!root.querySelector('[data-fx-proof]')) return;
       const d = 2;
       const c = document.createElement('canvas');
       c.width = GLYPHS.length * cellW * d; c.height = 2 * cellH * d;
@@ -1431,11 +1489,16 @@ class Component extends DCLogic {
       row.classList.toggle('open', open);
       row.setAttribute('aria-expanded', open ? 'true' : 'false');
       const w = row.querySelector('.accwrap');
-      if (w) w.style.maxHeight = open ? (w.scrollHeight + 'px') : '0px';
+      if (w) {
+        w.inert = !open;
+        w.setAttribute('aria-hidden', open ? 'false' : 'true');
+        w.style.maxHeight = open ? (w.scrollHeight + 'px') : '0px';
+      }
     };
     this._accResize = () => accs.forEach(o => { if (o.classList.contains('open')) { const w = o.querySelector('.accwrap'); if (w) w.style.maxHeight = w.scrollHeight + 'px'; } });
     addEventListener('resize', this._accResize, { passive: true });
     accs.forEach(row => {
+      setAcc(row, false);
       row.addEventListener('click', (e) => {
         if (e.target && e.target.closest && e.target.closest('a')) return;
         const open = !row.classList.contains('open');
@@ -1453,13 +1516,14 @@ class Component extends DCLogic {
     const sm = { target: scrollY, current: scrollY, active: false };
     this.sm = sm;
     const maxS = () => document.documentElement.scrollHeight - innerHeight;
+    const navOffset = () => mobile ? 68 : 64;
     // native scrolling everywhere; anchors glide via the browser's own smooth behavior
     root.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href'); if (!id || id.length < 2) return;
         const tg = root.querySelector(id) || document.querySelector(id); if (!tg) return;
         e.preventDefault();
-        scrollTo({ top: clamp(scrollY + tg.getBoundingClientRect().top - 6, 0, maxS()), behavior: reduce ? 'auto' : 'smooth' });
+        scrollTo({ top: clamp(scrollY + tg.getBoundingClientRect().top - navOffset(), 0, maxS()), behavior: reduce ? 'auto' : 'smooth' });
       });
     });
     this._scroll = () => {
@@ -1500,14 +1564,15 @@ class Component extends DCLogic {
         catch (err) { this._fxDead = true; } // a canvas failure must never take scrolling down with it
       }
     };
-    if (!reduce) {
+    const needsFrameLoop = !!(wantSmooth || enablePin || P || F || C);
+    if (!reduce && needsFrameLoop) {
       schedule();
       this._visib = () => {
         if (document.hidden) { cancelAnimationFrame(this._raf); clearTimeout(this._rafTo); this._raf = 0; this._lt = 0; }
         else if (!this._raf) { layout(); cacheRects(); applyFrame(); schedule(); }
       };
       addEventListener('visibilitychange', this._visib);
-    } else {
+    } else if (reduce) {
       // beautiful stills
       heroStep(0.001, 0); if (pin) pinStep(0.001);
       const stillProof = () => proofStep(0.001);
